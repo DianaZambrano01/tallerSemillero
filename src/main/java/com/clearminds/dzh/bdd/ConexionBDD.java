@@ -35,7 +35,7 @@ public class ConexionBDD {
 
 	}
 
-	public static Connection obtenerConexion() throws BDDException{
+	public static Connection obtenerConexion() throws BDDException {
 		Connection conn = null;
 		String url = leerPropiedad("urlConexion");
 		String password = leerPropiedad("password");
@@ -43,23 +43,21 @@ public class ConexionBDD {
 		try {
 			conn = DriverManager.getConnection(url, usuario, password);
 		} catch (Exception e) {
-		
-			//e.printStackTrace();
+
+			// e.printStackTrace();
 			throw new BDDException("No se pudo conectar a la base de datos");
-			
-		}finally {
-			try {
-				if(conn!=null){
-				conn.close();
-				}
-			} catch (SQLException e)  {
-				
-			//	e.printStackTrace();
-				throw new BDDException("No se pudo conectar a la base de datos");
-				
-			}
-		}
-		
+
+		} /*
+			 * finally { try { if(conn!=null){ conn.close(); } } catch
+			 * (SQLException e) {
+			 * 
+			 * // e.printStackTrace(); throw new
+			 * BDDException("No se pudo conectar a la base de datos");
+			 * 
+			 * } }
+			 */ // No se necesita cerrar la conexión en el finally ya que se esta
+				// controlando el cierre de la sesion en ServicioEstudiante
+
 		return conn;
 	}
 
