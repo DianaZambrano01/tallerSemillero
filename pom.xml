@@ -26,6 +26,10 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<version>6.1.0.jre8</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.clearminds.dzh</groupId>
+			<artifactId>model</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 </project>
