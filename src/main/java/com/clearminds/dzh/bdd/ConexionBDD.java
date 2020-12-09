@@ -1,14 +1,10 @@
 package com.clearminds.dzh.bdd;
 
+import java.io.File;
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Properties;
-
-import javax.sql.rowset.spi.TransactionalWriter;
-
-import org.omg.PortableServer.ThreadPolicyOperations;
 
 import com.clearminds.dzh.excepciones.BDDException;
 
@@ -19,6 +15,8 @@ public class ConexionBDD {
 		String respuesta = null;
 
 		try {
+			File f = new File("conexion.properties");
+			System.out.println("ruta: " + f.getAbsolutePath());
 			p.load(new FileReader("conexion.properties"));
 			if (p.getProperty(nombrePropiedad) != null) {
 				respuesta = p.getProperty(nombrePropiedad);
@@ -40,6 +38,9 @@ public class ConexionBDD {
 		String url = leerPropiedad("urlConexion");
 		String password = leerPropiedad("password");
 		String usuario = leerPropiedad("usuario");
+		System.out.println(url);
+		System.out.println(password);
+		System.out.println(usuario);
 		try {
 			conn = DriverManager.getConnection(url, usuario, password);
 		} catch (Exception e) {
